@@ -1,0 +1,13 @@
+{% extends "SiteAdminBundle::layout.html.twig" %}
+
+{% block custom_block %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Modifier un tutoriel</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block container %}
+    {{ form(edit_form) }}
+{% endblock %}

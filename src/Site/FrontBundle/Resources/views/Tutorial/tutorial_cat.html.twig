@@ -1,0 +1,72 @@
+{% extends "SiteFrontBundle::layout.html.twig" %}
+
+{% block content %}
+    {% block last_tutorials %}
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <i class="fa fa-university fa-fw"></i>
+                    Liste des tutoriels
+                </h2>
+            </div>
+
+            <div class="panel-body" id="tutorial_list">
+                <div class="row">
+                    {% if tutorials is defined %}
+                        {% for tutorial in tutorials %}
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="tuto-prev">
+                                    <h4>{{ tutorial.title }}</h4>
+                                    <hr />
+
+                                    {% if tutorial.image is not null %}
+                                        <img src="{{ tutorial.image.webPath|apply_filter('thumb_tuto') }}" class="img-responsive">
+                                        <hr />
+                                    {% else %} 
+                                        <img src="{{ tutorial.category.image.webPath|apply_filter('thumb_tuto') }}" class="img-responsive">
+                                        <hr />
+                                    {% endif %}
+
+                                    <p id="description">{{ tutorial.description | truncate(180, true) }}</p>
+
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <h5>
+                                                <i class="fa-li fa fa-thumb-tack fa-fw"></i>
+                                                Catégorie :
+                                            </h5>
+                                            <p>{{ tutorial.category.name }}</p>
+                                        </li>
+                                        <li>
+                                            <h5>
+                                                <i class="fa-li fa fa-user fa-fw"></i>
+                                                Auteur :
+                                            </h5>
+                                            <p>{{ tutorial.user.author.name }}</p>
+                                        </li>
+                                        <li>
+                                            <h5>
+                                                <i class="fa-li fa fa-calendar fa-fw"></i>
+                                                Date de création :
+                                            </h5>
+                                            <p>Créé le {% if tutorial.createdAt %}{{ tutorial.createdAt|date('d-m-Y H:i:s') }}{% endif %}</p>
+                                        </li>
+                                    </ul>
+                                    <hr />
+                                    <p class="center-btn">
+                                        <a  href="{{ path('site_front_tutorial_show', { 'slug': tutorial.slug }) }}" role="button" class="btn btn-danger">
+                                            Voir les détails &raquo;
+                                        </a>
+                                    </p>
+                                </div>
+                            </div><!--/span-->
+                        {% endfor %}
+                    {% else %}
+                        <p style="margin-left: 20px;">Désolé, il n'y a pas de tutoriel dans cette catégorie.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endblock last_tutorials %}
+{% endblock content %}

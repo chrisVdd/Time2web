@@ -1,0 +1,66 @@
+{# TEMPLATE DE BASE (TEMPLATE GENERAL DE L'APPLICATION) #}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="alternate" type="application/atom+xml" title="Derniers commentaires" href="{{ url('site_front_comment', {'_format': 'atom'}) }}" />
+        <link rel="alternate" type="application/atom+xml" title="Liste des derniers tutoriels publiés" href="{{ url('site_front_tutorial', {'_format': 'atom'}) }}" />
+        
+        {{ render(controller('SiteSeoBundle:Seo:seo')) }}
+        
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('font-awesome-4.1.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+        {% block stylesheets %}
+            {% stylesheets filter='cssrewrite'
+                'css/*'
+            %}
+                <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+            {% endstylesheets %}
+        {% endblock stylesheets %}
+    </head>
+
+    <body>
+        {% block body %}
+        
+            {% block navbar %}            
+            {% endblock %}
+
+            <div id="page-wrapper">
+
+                {% block custom_block %}            
+                {% endblock %}
+
+                {% block container %}
+                {% endblock %}
+            </div>
+        
+            {% block footer %}          
+            {% endblock %}
+            
+        {% endblock  body%}
+        
+        <script type="text/javascript" src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script>
+            (function(i,s,o,g,r,a,m)
+            {
+                i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
+                {
+                    (i[r].q=i[r].q||[]).push(arguments)
+                },
+                i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })
+            (window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-55548779-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+        {% block javascripts %}
+        {% endblock %}
+
+    </body>
+</html>

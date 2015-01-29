@@ -1,0 +1,45 @@
+{% extends "SiteUserBundle::layout.html.twig" %}
+
+<div class="col-xs-12 col-sm-9">
+    <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <div class="panel panel-default" id="bloc_profil">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                Vos tutoriels favoris
+            </h2>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-xs-12 col-sm-9"  id="data_block">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Titre du tutoriel</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for favorite in favorites %}
+                                    <tr>
+                                        <td>{{ favorite.tutorial.title }}</td>
+                                        <td>{{ favorite.tutorial.description }}</td>
+                                        <td>
+                                            <a href="{{ path('user_favorite_delete', { 'id': favorite.id }) }}" title="Supprimer des favoris">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>             
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

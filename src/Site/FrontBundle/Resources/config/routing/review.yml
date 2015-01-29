@@ -1,0 +1,42 @@
+site_front_review:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:Review:index" }
+
+site_front_review_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteFrontBundle:Review:show" }
+    
+site_front_review_new:
+    pattern:  /new
+    defaults: { _controller: "SiteFrontBundle:Review:new" }    
+
+site_front_review_create:
+    path:     /create/{tutorial_id}
+    defaults: { _controller: "SiteFrontBundle:Review:create" }
+    requirements: { _method: post }
+
+site_front_review_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:Review:edit" }
+
+site_front_review_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:Review:update" }
+    requirements: { _method: post|put }
+
+site_front_review_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:Review:delete" }
+    requirements: { _method: get|delete }
+    
+site_front_review_tutorial:
+    path:     /review_tutorial/{slug}
+    defaults: { _controller: "SiteFrontBundle:Review:reviewByTutorial" }    
+    
+site_front_review_abuse:
+    pattern:  /{id}/abuse
+    defaults: { _controller: "SiteFrontBundle:Review:abuse" }
+    
+site_front_review_list_abuse:
+    pattern: /list_abuse
+    defaults: { _controller: "SiteFrontBundle:Review:liste_abuse" }

@@ -1,0 +1,30 @@
+admin_comment:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:admin/Comment:index" }
+
+admin_comment_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteFrontBundle:admin/Comment:show" }
+
+admin_comment_new:
+    path:     /new
+    defaults: { _controller: "SiteFrontBundle:admin/Comment:new" }
+    
+admin_comment_create:
+    path:     /create
+    defaults: { _controller: "SiteFrontBundle:admin/Comment:create" }
+    requirements: { _method: post }
+
+admin_comment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:admin/Comment:edit" }
+
+admin_comment_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:admin/Comment:update" }
+    requirements: { _method: post|put }
+    
+admin_comment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:admin/Comment:delete" }
+    requirements: { _method: get|delete }

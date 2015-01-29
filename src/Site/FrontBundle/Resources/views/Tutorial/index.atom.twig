@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Time2web</title>
+    <subtitle>Derniers tutoriels publiés</subtitle>
+    <link href="{{ url('site_front_tutorial', {'_format': 'atom'}) }}" rel="self"/>
+    <link href="{{ url('site_front_homepage') }}"/>
+    <updated>{{ lastUpdated }}</updated>
+    <author><name>Time2web</name></author>
+    <id>{{ feedId }}</id>
+
+    {% for tutorial in tutorials %}
+        <entry>
+            <title>{{ tutorial.title }}</title>
+            <link href="{{ url('site_front_tutorial_show', { 'slug': tutorial.slug }) }}" />
+            <id>{{ tutorial.id }}</id>
+            <updated>{{ tutorial.lastModified.format(constant('DATE_ATOM')) }}</updated>
+            <summary type="xhtml">
+                <div xmlns="http://www.w3.org/1999/xhtml">
+                    <div>
+                        <p>{{ tutorial.description | truncate(120, true) |capitalize }}</p>
+                    </div>
+                </div>
+            </summary>
+            <author><name>{{ tutorial.user.author.name }}</name></author>
+        </entry>
+    {% endfor %}
+</feed>

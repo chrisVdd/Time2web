@@ -1,0 +1,30 @@
+admin_seo:
+    path:     /
+    defaults: { _controller: "SiteSeoBundle:admin/Seo:index" }
+
+admin_seo_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteSeoBundle:admin/Seo:show" }
+
+admin_seo_new:
+    path:     /new
+    defaults: { _controller: "SiteSeoBundle:admin/Seo:new" }
+
+admin_seo_create:
+    path:     /create
+    defaults: { _controller: "SiteSeoBundle:admin/Seo:create" }
+    requirements: { _method: post }
+
+admin_seo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteSeoBundle:admin/Seo:edit" }
+
+admin_seo_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteSeoBundle:admin/Seo:update" }
+    requirements: { _method: post|put }
+
+admin_seo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteSeoBundle:admin/Seo:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,16 @@
+{% extends "SiteFrontBundle::layout.html.twig" %}
+
+{% block content %}
+    <h1>Category editeee</h1>
+
+    {{ form(edit_form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('site_front_category') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock content %}

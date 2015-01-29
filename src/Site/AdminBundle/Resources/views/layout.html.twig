@@ -1,0 +1,47 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/siteadmin/css/plugins/metisMenu/metisMenu.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/siteadmin/css/plugins/timeline.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/siteadmin/css/sb-admin-2.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/siteadmin/css/plugins/morris.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/siteadmin/css/style.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block body %}
+    <div id="wrapper">
+        {% if app.request.attributes.get("_route") == 'site_admin_login' %}
+            {% block navbar %}
+            {% endblock %}
+        {% else %}
+            {{ include('SiteAdminBundle:Admin:admin_navbar.html.twig') }}
+        {% endif %}
+        
+        <div id="page-wrapper">
+
+            {#
+            ********** CUSTOM BLOCK
+            ******************************
+            #}
+            {% block custom_block %}
+            {% endblock %}
+
+            {% block container %}
+            {% endblock %}
+
+            {% block footer %}
+            {% endblock %}
+            
+        </div>  
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/siteadmin/js/plugins/metisMenu/metisMenu.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/siteadmin/js/plugins/morris/raphael.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/siteadmin/js/plugins/morris/morris.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/siteadmin/js/plugins/morris/morris-data.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/siteadmin/js/sb-admin-2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/siteadmin/ckeditor/ckeditor.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,30 @@
+site_front_seo:
+    path:     /
+    defaults: { _controller: "SiteSeoBundle:Seo:index" }
+
+site_front_seo_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteSeoBundle:Seo:show" }
+
+site_front_seo_new:
+    path:     /new
+    defaults: { _controller: "SiteSeoBundle:Seo:new" }
+
+site_front_seo_create:
+    path:     /create
+    defaults: { _controller: "SiteSeoBundle:Seo:create" }
+    requirements: { _method: post }
+
+site_front_seo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteSeoBundle:Seo:edit" }
+
+site_front_seo_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteSeoBundle:Seo:update" }
+    requirements: { _method: post|put }
+
+site_front_seo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteSeoBundle:Seo:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,47 @@
+{% extends "SiteUserBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="col-xs-12 col-sm-9">
+        <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+        <div class="panel panel-default" id="bloc_profil">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    Vos tutoriels favoris
+                </h2>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width:33%;">Titre du tutoriel</th>
+                                    <th style="width:50%;">Description</th>
+                                    <th style="width:50%;">Auteur</th>
+                                    <th style="width:12%;" class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for favorite in favorites %}
+                                    <tr>
+                                        <td>{{ favorite.tutorial.title }}</td>
+                                        <td>{{ favorite.tutorial.description | truncate(120, true) |capitalize }}</td>
+                                        <td>{{ favorite.tutorial.user.author.name }}</td>
+                                        <td>
+                                            <form action="{{ path('user_favorite_delete', { 'id': favorite.id }) }}" method="post">
+                                                <input type="hidden" name="_method" value="DELETE" />
+                                                {{ form_widget(deleteForms[favorite.id]) }}
+                                            </form> 
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

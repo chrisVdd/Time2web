@@ -1,0 +1,59 @@
+{% extends "SiteFrontBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            
+            <h2 class="panel-title">
+                <i class="fa fa-user fa-fw"></i>
+                Liste des auteurs
+            </h2>
+        </div>
+        <div class="panel-body" id="tutorial_list">
+            <div class="row">
+                {% for entity in entities %}
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="tuto-prev">
+                        <h4>{{ entity.name }}</h4>
+                        <hr />
+                        {% if entity.user.image is not null %}
+                            <img src="{{ entity.user.image.webPath|apply_filter('thumb_user') }}" class="img-circle img-responsive">
+                        {% else %} 
+                            <img src="{{ asset('img/default_avatar.jpg') }}" class="img-circle img-responsive" style="width: 80px">
+                        {% endif %}
+                        <hr />
+                        <ul class="fa-ul">
+                            <li>
+                                <h5>
+                                    <i class="fa-li fa fa-thumb-tack fa-fw"></i>
+                                    Description :
+                                </h5>
+                                <p>
+                                    {% if entity.presentation is not null %}
+                                        {{ entity.presentation | capitalize | raw }}
+                                    {% else %} 
+                                        Cet auteur n'a pas de présentation.
+                                    {% endif %}
+                                </p>
+                            </li>
+                            <li>
+                                <h5>
+                                    <i class="fa-li fa fa-user fa-fw"></i>
+                                    Site perso :
+                                </h5>
+                                <p>
+                                    {% if entity.web is not null %}
+                                        <a href="{{ entity.web }}">{{ entity.web }}</a>
+                                    {% else %} 
+                                        <p>Cet auteur n'a pas de site perso.</p>
+                                    {% endif %}
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!--/span-->
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

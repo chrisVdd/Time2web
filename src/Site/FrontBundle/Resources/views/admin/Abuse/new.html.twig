@@ -1,0 +1,23 @@
+{% extends "SiteAdminBundle::layout.html.twig" %}
+
+{% block custom_block %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Ajouter un abus</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block container %}
+    <h1>Abuse creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_abuse') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock container %}

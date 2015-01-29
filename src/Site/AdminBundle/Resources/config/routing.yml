@@ -1,0 +1,51 @@
+site_admin_homepage:
+    path:     /
+    defaults: { _controller: SiteAdminBundle:Admin:index }
+    
+site_admin_login:
+    path: /login
+    defaults: { _controller: SiteUserBundle:Security:login }
+    
+site_admin_logout:
+    path: /logout
+    defaults: { _controller: SiteUserBundle:Security:logout }
+    
+site_admin_check:
+    path: /login_check
+    defaults: { _controller: SiteUserBundle:Security:check }
+    
+site_admin_tutorial:
+    resource: "@SiteFrontBundle/Resources/config/routing/admin/tutorial.yml"
+    prefix:   /tutorial
+    
+site_admin_category:
+    resource: "@SiteFrontBundle/Resources/config/routing/admin/category.yml"
+    prefix:   /category
+    
+site_admin_programminglanguage:
+    resource: "@SiteFrontBundle/Resources/config/routing/admin/programminglanguage.yml"
+    prefix:   /programminglanguage
+
+site_admin_abuse:
+    resource: "@SiteFrontBundle/Resources/config/routing/admin/abuse.yml"
+    prefix:   /abuse
+
+site_admin_user:
+    resource: "@SiteUserBundle/Resources/config/routing/admin/user.yml"
+    prefix:   /user
+
+site_admin_review:
+    resource: "@SiteFrontBundle/Resources/config/routing/admin/review.yml"
+    prefix:   /review
+    
+site_admin_seo:
+    resource: "@SiteSeoBundle/Resources/config/routing/admin/seo.yml"
+    prefix:   /seo
+    
+site_admin_page:
+    resource: "@SiteFrontBundle/Resources/config/routing/admin/page.yml"
+    prefix:   /page    
+    
+site_admin_comment:
+    resource: "@SiteFrontBundle/Resources/config/routing/admin/comment.yml"
+    prefix:   /comment      

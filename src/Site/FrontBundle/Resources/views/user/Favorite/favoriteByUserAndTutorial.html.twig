@@ -1,0 +1,5 @@
+{% if favorite %}
+    Ce tutoriel est dans la liste de vos tutoriels favoris.   
+{% else %}
+    {{ render (controller("SiteFrontBundle:User/Favorite:new" , { 'tutorial_id' : tutorial_id })) }}
+{% endif %}

@@ -1,0 +1,30 @@
+admin_tutorial:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:admin/Tutorial:index" }
+
+admin_tutorial_show:
+    path:     /show/{slug}
+    defaults: { _controller: "SiteFrontBundle:admin/Tutorial:show" }
+
+admin_tutorial_new:
+    path:     /new
+    defaults: { _controller: "SiteFrontBundle:admin/Tutorial:new" }
+
+admin_tutorial_create:
+    path:     /create
+    defaults: { _controller: "SiteFrontBundle:admin/Tutorial:create" }
+    requirements: { _method: post }
+
+admin_tutorial_edit:
+    path:     /{slug}/edit
+    defaults: { _controller: "SiteFrontBundle:admin/Tutorial:edit" }
+
+admin_tutorial_update:
+    path:     /{slug}/update
+    defaults: { _controller: "SiteFrontBundle:admin/Tutorial:update" }
+    requirements: { _method: post|put }
+
+admin_tutorial_delete:
+    path:     /delete/{slug}
+    defaults: { _controller: "SiteFrontBundle:admin/Tutorial:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,21 @@
+{% extends "SiteUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block content %}
+    <div class="col-xs-12 col-sm-9">
+        <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    Activation du compte
+                </h2>
+            </div>
+            <div class="panel-body">
+                <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,34 @@
+admin_review:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:admin/Review:index" }
+
+admin_review_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteFrontBundle:admin/Review:show" }
+    
+admin_review_new:
+    pattern:  /new
+    defaults: { _controller: "SiteFrontBundle:admin/Review:new" }    
+
+admin_review_create:
+    path:     /create/{tutorial_id}
+    defaults: { _controller: "SiteFrontBundle:admin/Review:create" }
+    requirements: { _method: post }
+
+admin_review_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:admin/Review:edit" }
+
+admin_review_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:admin/Review:update" }
+    requirements: { _method: post|put }
+
+admin_review_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:admin/Review:delete" }
+    requirements: { _method: post|delete }
+    
+admin_review_tutorial:
+    path:     /review_tutorial/{slug}
+    defaults: { _controller: "SiteFrontBundle:admin/Review:reviewByTutorial" }    

@@ -1,0 +1,93 @@
+site_user_root:
+    path:  /
+    defaults: { _controller: SiteUserBundle:User:index }
+
+site_user_login:
+    path:  /login
+    defaults: { _controller: SiteUserBundle:Security:login }
+
+site_user_logout:
+    path:  /logout
+    defaults: { _controller: SiteUserBundle:Security:logout }
+   
+site_user_check:
+    path:  /login_check
+    defaults: { _controller: SiteUserBundle:Security:check }
+
+site_user_register:
+    path:  /register
+    defaults: { _controller: SiteUserBundle:Registration:register }
+
+site_user_register_confirmed:
+    path:  /register/confirmed
+    defaults: { _controller: SiteUserBundle:Registration:confirmed }      
+    
+site_user_profile_show:
+    path: /profil
+    defaults: { _controller: SiteUserBundle:Profile:show }
+    
+site_user_profile_edit:
+    path: /profil/edit/{id}
+    defaults: { _controller: SiteUserBundle:User:edit }
+    
+site_user_change_password:
+    path: /change-password
+    defaults: { _controller: SiteUserBundle:ChangePassword:changePassword }
+    requirements: { _method: get|post }
+    
+site_user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SiteUserBundle:User:update" }
+    requirements: { _method: post|put }
+    
+site_user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SiteUserBundle:User:edit" }
+    
+site_user_resetting_request:
+    path: /reset/request
+    defaults: { _controller: SiteUserBundle:Resetting:request }
+    requirements: { _method: get }    
+    
+site_user_resetting_send_email:
+    path: /reset/send-email
+    defaults: { _controller: SiteUserBundle:Resetting:sendEmail }
+    requirements: { _method: post }    
+
+fos_user_registration_check_email:
+    path:  /check-email
+    defaults: { _controller: SiteUserBundle:Registration:checkEmail }
+
+fos_user_registration_confirm:
+    path:  /confirm/{token}
+    defaults: { _controller: SiteUserBundle:Registration:confirm } 
+
+fos_user_resetting_check_email:
+    path: /reset/check-email
+    defaults: { _controller: SiteUserBundle:Resetting:checkEmail }
+    requirements: { _method: get }
+
+fos_user_resetting_reset:
+    path: /reset/{token}
+    defaults: { _controller: SiteUserBundle:Resetting:reset }
+    requirements: { _method: get|post }    
+    
+site_author:
+    resource: "@SiteUserBundle/Resources/config/routing/author.yml"
+    prefix:   /author
+    
+site_reader:
+    resource: "@SiteUserBundle/Resources/config/routing/reader.yml"
+    prefix:   /reader
+
+site_user:
+    resource: "@SiteUserBundle/Resources/config/routing/user.yml"
+    prefix:   /
+    
+site_user_tutorial:
+    resource: "@SiteFrontBundle/Resources/config/routing/user/tutorial.yml"
+    prefix:   /tutorial
+
+site_user_favorite:
+    resource: "@SiteFrontBundle/Resources/config/routing/user/favorite.yml"
+    prefix:   /favorite       

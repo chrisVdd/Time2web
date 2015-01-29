@@ -1,0 +1,51 @@
+site_front_homepage:
+    path:  /{page}
+    defaults: { _controller: SiteFrontBundle:Front:index, page:1 }
+    requirements:
+        page: \d*
+        
+site_front_about:
+    path:     /about
+    defaults: { _controller: "SiteFrontBundle:Front:about" }
+    
+site_front_contact:
+    path:     /contact
+    defaults: { _controller: "SiteFrontBundle:Front:contact" }
+    requirements:
+        _method(): GET|POST
+
+site_front_tuto:
+    resource: "@SiteFrontBundle/Resources/config/routing/tutorial.yml"
+    prefix:   /tutorial
+    
+site_front_category:
+    resource: "@SiteFrontBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+    
+site_front_programminglanguage:
+    resource: "@SiteFrontBundle/Resources/config/routing/programminglanguage.yml"
+    prefix:   /programminglanguage
+    
+site_front_abuse:
+    resource: "@SiteFrontBundle/Resources/config/routing/abuse.yml"
+    prefix:   /abuse
+    
+site_front_review:
+    resource: "@SiteFrontBundle/Resources/config/routing/review.yml"
+    prefix:   /review
+    
+site_front_page:
+    resource: "@SiteFrontBundle/Resources/config/routing/page.yml"
+    prefix:   /page
+    
+site_front_comment:
+    resource: "@SiteFrontBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
+    
+site_front_favorite:
+    resource: "@SiteFrontBundle/Resources/config/routing/favorite.yml"
+    prefix:   /favorite
+    
+site_front_author:
+    resource: "@SiteFrontBundle/Resources/config/routing/author.yml"
+    prefix:   /author 

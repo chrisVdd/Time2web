@@ -1,0 +1,54 @@
+{% extends "SiteAdminBundle::layout.html.twig" %}
+
+{% block custom_block %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Liste des langages de programmation
+            </h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block container %}
+    <a href="{{ path('admin_programminglanguage_new') }}">
+        <i class="fa fa-plus-circle fa-lg fa-fw"></i> 
+        Ajouter un langage de programmation 
+    </a>
+    
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Nom</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for entity in entities %}
+                    <tr class="odd gradeX">
+                        <td>{{ entity.id }}</td>
+                        <td>{{ entity.name }}</td>
+                        <td>{{ entity.description }}</td>
+                        <td class="table-action">
+                            <a href="{{ path('admin_programminglanguage_show', { 'id': entity.id }) }}" class="btn btn-primary">
+                                Voir
+                            </a>
+                            <a href="{{ path('admin_programminglanguage_edit', { 'id': entity.id }) }}" class="btn btn-success">
+                                Editer
+                            </a>
+                            <hr />
+                            <form action="{{ path('admin_programminglanguage_delete', { 'id': entity.id }) }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE" />
+                                {{ form_widget(deleteForms[entity.id]) }}
+                            </form>     
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>   
+        </table>
+    </div>
+{% endblock %}

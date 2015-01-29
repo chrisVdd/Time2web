@@ -1,0 +1,3 @@
+site_seo_seo:
+    resource: "@SiteSeoBundle/Resources/config/routing/seo.yml"
+    prefix:   /seo

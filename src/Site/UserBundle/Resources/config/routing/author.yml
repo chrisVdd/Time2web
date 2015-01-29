@@ -1,0 +1,30 @@
+site_author:
+    path:     /
+    defaults: { _controller: "SiteUserBundle:Author:index" }
+
+site_author_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteUserBundle:Author:show" }
+
+site_author_new:
+    path:     /new
+    defaults: { _controller: "SiteUserBundle:Author:new" }
+
+site_author_create:
+    path:     /create
+    defaults: { _controller: "SiteUserBundle:Author:create" }
+    requirements: { _method: post }
+
+site_author_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteUserBundle:Author:edit" }
+
+site_author_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteUserBundle:Author:update" }
+    requirements: { _method: post|put }
+
+site_author_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteUserBundle:Author:delete" }
+    requirements: { _method: post|delete }

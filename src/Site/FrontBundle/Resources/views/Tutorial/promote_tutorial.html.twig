@@ -1,0 +1,45 @@
+<div id="tutorial_promote">
+    <h5>Le tutoriel du mois :</h5>
+    <hr />
+    
+    {% if tutorial.image is not null %}
+        <img src="{{ tutorial.image.webPath|apply_filter('thumb_promote') }}" class="img-responsive">
+    {% else %} 
+        <img src="{{ tutorial.category.image.webPath|apply_filter('thumb_promote') }}" class="img-responsive">
+    {% endif %}
+    <ul class="fa-ul">
+        <li>
+            <i class="fa-li fa fa-university"></i>
+            <strong>
+                <a  href="{{ path('site_front_tutorial_show', { 'slug': tutorial.slug }) }}">
+                    {{ tutorial.title }}
+                </a>
+            </strong>
+        </li>
+        <hr />
+        <li>
+            <i class="fa-li fa fa-list-alt"></i>
+            <p>
+                <strong>Description :</strong>
+                {{ tutorial.description |capitalize }}
+            </p>
+        </li>
+        <li>
+            <i class="fa-li fa fa-user"></i>
+            <p>
+                <strong>Auteur : </strong>
+                crée par {{ tutorial.user.author.name }}, 
+                le {% if tutorial.createdAt %}{{ tutorial.createdAt|date('d-m-Y') }}{% endif %}.
+
+            </p> 
+        </li>
+        <li>
+            <i class="fa-li fa fa-thumb-tack"></i>
+            <p>
+                <strong>Catégorie :</strong>
+                {{ tutorial.category.name }}
+            </p>
+        </li>
+    </ul>
+    
+</div>

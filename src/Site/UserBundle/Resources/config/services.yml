@@ -1,0 +1,20 @@
+parameters:
+#    site_user.example.class: Site\UserBundle\Example
+
+services:
+    site_user.registration.form.type:
+        class: Site\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: site_user_registration }
+            
+    site_user.profile.form.type:
+        class: Site\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: fos_user_profile }
+            
+#    site_user_bundle.image_type_extension:
+#        class: Site\UserBundle\Form\Extension\ImageTypeExtension
+#        tags:
+#            - { name: form.type_extension, alias: file }

@@ -1,0 +1,36 @@
+{% extends "SiteFrontBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            
+            <h2 class="panel-title">
+                <i class="fa fa-user fa-fw"></i>
+                Liste des tutoriels
+            </h2>
+        </div>
+        <div class="panel-body" id="tutorial_list">
+            <div class="row">
+                {% for entity in entities %}
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="tuto-prev">
+                        <h4>{{ entity.username }}</h4>
+                        <hr />
+                        
+                        {% if entity.image is not null %}
+                            <img src="{{ entity.image.webPath|apply_filter('thumb_tuto') }}" class="img-responsive">
+                            <hr />
+                         {% else %} 
+                            AUTRE IMG
+                            <hr />
+                        {% endif %}
+                        
+                        <p id="description">{{ entity.presentation | truncate(120, true) |capitalize }}</p>
+                        <hr />
+                    </div>
+                </div><!--/span-->
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

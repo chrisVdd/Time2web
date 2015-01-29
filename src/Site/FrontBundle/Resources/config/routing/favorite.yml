@@ -1,0 +1,30 @@
+site_front_favorite:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:Favorite:index" }
+
+site_front_favorite_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteFrontBundle:Favorite:show" }
+
+site_front_favorite_new:
+    path:     /new
+    defaults: { _controller: "SiteFrontBundle:Favorite:new" }
+
+site_front_favorite_create:
+    path:     /create
+    defaults: { _controller: "SiteFrontBundle:Favorite:create" }
+    requirements: { _method: post }
+
+site_front_favorite_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:Favorite:edit" }
+
+site_front_favorite_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:Favorite:update" }
+    requirements: { _method: post|put }
+
+site_front_favorite_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:Favorite:delete" }
+    requirements: { _method: post|delete }

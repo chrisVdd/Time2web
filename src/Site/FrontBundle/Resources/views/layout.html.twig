@@ -1,0 +1,186 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/sitefront/css/offcanvas.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/sitefront/css/star-rating.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/sitefront/css/style.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{#
+********** NAVBAR
+******************************
+#}
+
+{% block navbar %}
+    <div class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse">
+                {{ knp_menu_render('SiteFrontBundle:Builder:mainMenu') }}
+
+                <div class="col-lg-3 col-md-4 col-sm-5">
+                    <form class="navbar-form" action="{{ path('site_front_tutorial_search') }}" role="search" method="post">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Chercher un tutoriel" name="mot_cle" id="mot_cle">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {{ render(controller("SiteUserBundle:Security:loginBis")) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{#
+********** CUSTOM BLOCK
+******************************
+#}
+{% block custom_block %}
+    {#
+    <nav class="breadcrumb">
+        
+        {% block breadcrumb %}
+            {% spaceless %}
+                <nav class="breadcrumb">
+                    {% set currentItem = knp_menu_get('SiteFrontBundle:Builder:breadCrumb').getBreadcrumbsArray %}
+                    {% for item in currentItem %}
+                        {% if loop.index != 1 %}
+                            {% if loop.index > 2 %} &gt; {% endif %}
+                            {% if not loop.last %}<a href="{{ item.uri }}">{{ item.label }}</a>
+                            {% else %}<span>{{ item.label }}</span>{% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </nav>
+            {% endspaceless %}
+        {% endblock %}
+        
+    </nav>
+        #}
+    <div id="custo_block">
+        <div class="container">
+            <div class="col-lg-4 col-md-4">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ render(controller("SiteFrontBundle:Comment:lastComments")) }}                 
+                {% else %}
+                    <div class="text-center">
+                        <img src="{{ asset('bundles/sitefront/img/icon_author.png') }}" alt="Icone auteur"/>
+                        <h2>AUTEUR</h2>
+                        <p>
+                            Devenez auteur, et créer des tutoriels gratuits ou 
+                            payants pour la communauté.
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+
+            
+            <div class="col-lg-4 col-md-4">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ render(controller("SiteFrontBundle:Tutorial:promote")) }} 
+                {% else %}
+                    <div class="text-center">
+                        <img src="{{ asset('bundles/sitefront/img/icon_reader.png') }}" alt="Icone lecteur"/>
+                        <h2>LECTEUR</h2>
+                        <p>
+                            Inscrivez-vous comme lecteur, et profitez des avantages
+                            liés à une plateforme d'apprentissage.
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="col-lg-4 col-md-4">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ render(controller("SiteFrontBundle:Tutorial:lastTutorials")) }} 
+                {% else %}
+                    <div class="text-center">
+                        <img src="{{ asset('bundles/sitefront/img/icon_sharing.png') }}" alt="Icone partage"/>
+                        <h2>PARTAGE</h2>
+                        <p>
+                            Partagez les tutoriels que vous avez créé, mais aussi
+                            les tutoriels qui vous ont fait progresser.
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{#
+********** CONTENT
+******************************
+#}
+{% block container %}
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+                {{ render(controller("SiteFrontBundle:Front:menuCategorie")) }}
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {% include "SiteFrontBundle:Front:author_menu.html.twig" %}
+                    {% include "SiteUserBundle:Security:profil_notif.html.twig" %}
+                {% endif %}
+            </div>
+
+            <div class="col-xs-12 col-sm-9">
+                <p class="pull-left visible-xs">
+                    <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+                </p>
+                {% block page_content %}
+                    {% if app.request.attributes.get("_route") == 'site_front_homepage' %}
+                        {{ render(controller("SiteFrontBundle:Page:show", {'id': 1})) }}
+                    {% elseif app.request.attributes.get("_route") == 'site_front_tutorial' %}
+                        {{ render(controller("SiteFrontBundle:Page:show", {'id': 2})) }}    
+                    {% elseif app.request.attributes.get("_route") == 'site_front_about' %}
+                        {{ render(controller("SiteFrontBundle:Page:show", {'id': 3})) }}
+                    {% elseif app.request.attributes.get("_route") == 'site_front_contact' %}
+                        {{ render(controller("SiteFrontBundle:Page:show", {'id': 4})) }}
+                        {{ include('SiteFrontBundle:Page:contact.html.twig') }}
+                    {% endif %}
+                {% endblock page_content %}
+
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+{% endblock container %}
+
+{#
+********** FOOTER
+******************************
+#}
+
+{% block footer %}
+    <footer class="footer">
+        <div class="container">
+            <p>
+                &copy; Copyright 2014 - Vandendyck Christina - 
+                <a href="{{ path('site_admin_login') }}">
+                    <i class="fa fa-lock"></i>
+                </a>
+            </p> 
+        </div>
+    </footer>
+{% endblock footer %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/sitefront/js/offcanvas.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitefront/js/star-rating.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitefront/ckeditor/ckeditor.js') }}"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer>
+        {
+            lang: 'fr'
+        }
+    </script>
+{% endblock %}

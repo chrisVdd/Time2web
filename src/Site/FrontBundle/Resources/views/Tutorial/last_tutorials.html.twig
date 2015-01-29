@@ -1,0 +1,24 @@
+<div id="last_tutorials">
+    <h5>Les derniers tutoriels publiés : </h5>
+    <hr />
+    <ul class="list_last">
+        {% for tutorial in tutorials %}
+            <li>
+                <p>
+                    <i class="fa fa-university fa-fw"></i>
+                    {{ tutorial.title }} - <a  href="{{ path('site_front_tutorial_show', { 'slug': tutorial.slug }) }}">Voir</a>
+                </p>
+                <small>
+                    Publié le {% if tutorial.createdAt %}{{ tutorial.createdAt|date('d-m-Y') }}{% endif %} par {{ tutorial.user.author.name }}
+                    
+                </small>  
+            </li>
+            <hr />
+        {% endfor %}
+    </ul>
+    <hr />
+    <a href="{{ path('site_front_tutorial', {'_format': 'atom'}) }}" class="list-group-item">
+        <i class="fa fa-rss-square"></i>
+        Flux RSS - Derniers tutoriels publiés
+    </a>
+</div>

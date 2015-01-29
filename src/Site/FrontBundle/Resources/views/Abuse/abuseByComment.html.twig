@@ -1,0 +1,64 @@
+{% if comments %}
+    <div class="panel-group">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Commentaires
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    {% for comment in comments %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-3 col-md-2">
+                                    {% if comment.user.image is not null %}
+                                        <img src="{{ asset('uploads/img/') }}{{ comment.user.image.path }}" class="img-circle img-responsive">
+                                    {% else %} 
+                                        <img src="{{ asset('img/default_avatar.jpg') }}" class="img-circle img-responsive" style="width: 80px">
+                                    {% endif %}
+                                </div>
+                                <div class="col-xs-9 col-md-10">
+                                    <div class="mic-info">
+                                        <strong>De: </strong><a href="#">{{ comment.user }}</a> le 
+                                        {% if comment.createdAt %}{{ comment.createdAt|date('d-m-Y H:i:s') }}{% endif %}
+                                    </div>
+                                    <hr />
+                                    <div class="comment-text">
+                                        <strong>Commentaire: </strong>
+                                        <p>{{ comment.content }}</p>
+                                    </div>
+                                    <hr />
+                                    {% block action %}
+                                        <div class="action">
+                                            {% if app.user == comment.user %}
+                                                <a href="{{ path('site_front_comment_edit', {'id': comment.id}) }}" type="button" class="btn btn-primary btn-xs" title="Editer">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </a>
+                                                    
+                                                <a href="{{ path('site_front_comment_delete', {'id': comment.id}) }}" type="button" class="btn btn-danger btn-xs" title="Supprimer">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>     
+                                            {% else %}
+                                                <a href="{{ path('site_front_abuse_new', {'id': comment.id}) }}" type="button" class="btn btn-danger btn-xs" title="Signaler comme abusif">
+                                                    <span class="glyphicon glyphicon-thumbs-down"></span>
+                                                </a>   
+                                            {% endif %}
+                                        </div> 
+                                    {% endblock %}
+                                    
+                                    {% if app.user == comment.user %}
+                                        IL Y A ABUS
+                                    {% else %}
+                                        PAS D'ABUS 
+                                    {% endif %}
+                                </div> 
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul> 
+            </div>
+        </div>
+    </div>    
+{% endif %}

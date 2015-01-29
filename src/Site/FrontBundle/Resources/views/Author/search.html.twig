@@ -1,0 +1,60 @@
+{% extends "SiteFrontBundle:Tutorial:index.html.twig" %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+
+            <h2 class="panel-title">
+                <i class="fa fa-search fa-fw"></i>
+                Recherche "{{ mot_cle }}"
+            </h2>
+        </div>
+        <div class="panel-body" id="tutorial_list">
+            <div class="row">
+                    {% for author in authors %}     
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="tuto-prev">
+                                <h4>{{ author.name }}</h4>
+                                <hr />
+
+                                {% if author.user.image is not null %}
+                                    <img src="{{ asset('uploads/img/') }}{{ author.user.image.path }}" class="img-circle img-responsive">
+                                {% else %} 
+                                    <img src="{{ asset('img/default_avatar.jpg') }}" class="img-circle img-responsive" style="width: 80px">
+                                {% endif %}
+
+                                <ul class="fa-ul">
+                                    <li>
+                                        <h5>
+                                            <i class="fa-li fa fa-thumb-tack fa-fw"></i>
+                                            Description :
+                                        </h5>
+                                        <p>
+                                            {% if author.presentation is not null %}
+                                                {{ author.presentation | capitalize | raw }}
+                                            {% else %} 
+                                                Cet auteur n'a pas de présentation.
+                                            {% endif %}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <h5>
+                                            <i class="fa-li fa fa-user fa-fw"></i>
+                                            Site perso :
+                                        </h5>
+                                        <p>
+                                            {% if author.web is not null %}
+                                                <a href="{{ path('{{ entity.web }}') }}">{{ author.web }}</a>
+                                            {% else %} 
+                                            <p>Cet auteur n'a pas de site perso.</p>
+                                        {% endif %}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!--/span-->
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

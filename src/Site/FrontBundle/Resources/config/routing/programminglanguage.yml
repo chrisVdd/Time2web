@@ -1,0 +1,30 @@
+programminglanguage:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:ProgrammingLanguage:index" }
+
+programminglanguage_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteFrontBundle:ProgrammingLanguage:show" }
+
+programminglanguage_new:
+    path:     /new
+    defaults: { _controller: "SiteFrontBundle:ProgrammingLanguage:new" }
+
+programminglanguage_create:
+    path:     /create
+    defaults: { _controller: "SiteFrontBundle:ProgrammingLanguage:create" }
+    requirements: { _method: post }
+
+programminglanguage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:ProgrammingLanguage:edit" }
+
+programminglanguage_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:ProgrammingLanguage:update" }
+    requirements: { _method: post|put }
+
+programminglanguage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:ProgrammingLanguage:delete" }
+    requirements: { _method: post|delete }

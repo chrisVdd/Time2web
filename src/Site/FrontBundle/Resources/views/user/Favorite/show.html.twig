@@ -1,0 +1,33 @@
+{% if app.user.id == entity.user.id  %}
+    user id et favorite user sont =
+{% else %}
+{% endif %}
+
+
+
+<p><strong>user id: </strong>{{ app.user.id }}</p>
+<p><strong>tutorial id: </strong>{{ app.user.tutorial.id }}</p>
+<hr />
+
+<p><strong>favorite.user : </strong>{{ entity.user.id }}</p>
+<p><strong>favorite id : </strong>{{ entity.id }}</p>
+
+
+<h1>Favorite</h1>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('user_favorite') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('user_favorite_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+
+
+

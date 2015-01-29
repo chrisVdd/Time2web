@@ -1,0 +1,24 @@
+{% extends "SiteUserBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="col-xs-12 col-sm-9">
+        <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Modifier le tutoriel</h2>
+            </div>
+
+            <div class="panel-body edit_action">
+                {{ form(edit_form) }}
+                <a href="{{ path('site_front_tutorial') }}" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    Retour à la liste des tutoriels
+                </a>
+                <hr />
+                {{ form(delete_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

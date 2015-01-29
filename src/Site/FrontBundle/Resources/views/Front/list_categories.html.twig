@@ -1,0 +1,7 @@
+<div class="list-group">
+    {% for category in list_categories %}
+        <a href="{{ path('site_front_tutorial_category',{'id': category.id }) }}" class="list-group-item">
+            {{ category.name }}
+        </a>
+    {% endfor %}
+</div>

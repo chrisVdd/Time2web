@@ -1,0 +1,40 @@
+user_favorite:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:user/Favorite:index" }
+
+user_favorite_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteFrontBundle:user/Favorite:show" }
+
+user_favorite_new:
+    path:     /new
+    defaults: { _controller: "SiteFrontBundle:user/Favorite:new" }
+
+user_favorite_create:
+    path:     /create/{tutorial_id}
+    defaults: { _controller: "SiteFrontBundle:user/Favorite:create" }
+    requirements: { _method: post }
+
+user_favorite_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:user/Favorite:edit" }
+
+user_favorite_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:user/Favorite:update" }
+    requirements: { _method: post|put }
+
+user_favorite_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:user/Favorite:delete" }
+    requirements: { _method: get|delete }
+    
+user_favorite_tutorial:
+    path:     /favorite_tutorial/{id}
+    defaults: { _controller: "SiteFrontBundle:user/Favorite:favoriteByuserAndTutorial" }
+    
+user_favorite_by_user:
+    path:     /favorite_by_user
+    defaults: { _controller: "SiteFrontBundle:user/Favorite:favoriteByuser" }    
+    
+    

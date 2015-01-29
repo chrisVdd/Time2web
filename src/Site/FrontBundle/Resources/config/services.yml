@@ -1,0 +1,8 @@
+parameters:
+#    site_front.example.class: Site\FrontBundle\Example
+
+services:
+    site_front.image_type_extension:
+        class: Site\FrontBundle\Form\Extension\ImageTypeExtension
+        tags:
+            - { name: form.type_extension, alias: file }

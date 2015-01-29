@@ -1,0 +1,15 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block file_widget %}
+    {% spaceless %}
+        {% if image_url is not null %}
+            <div class="form-group">
+                <img src="{{ asset(image_url|apply_filter('thumb_tuto')) }}" class="img-responsive"/>
+            </div>
+        {% endif %}
+        <div class="form-group">
+            {{ block('form_widget') }}
+        </div>
+    {% endspaceless %}
+{% endblock %}
+

@@ -1,0 +1,5 @@
+{% for seo in seo %}
+    <title>{{ seo.title }} | {{ seo.suffix }}</title>
+    <meta name="description" content="{{ seo.metaDescription }}" />
+    <meta name="robot" content="{{ seo.metaRobot }}" />
+{% endfor %}

@@ -1,0 +1,30 @@
+site_front_abuse:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:Abuse:index" }
+
+site_front_abuse_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteFrontBundle:Abuse:show" }
+
+site_front_abuse_new:
+    path:     /new
+    defaults: { _controller: "SiteFrontBundle:Abuse:new" }
+
+site_front_abuse_create:
+    path:     /create/{comment_id}
+    defaults: { _controller: "SiteFrontBundle:Abuse:create" }
+    requirements: { _method: post }
+
+site_front_abuse_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:Abuse:edit" }
+
+site_front_abuse_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:Abuse:update" }
+    requirements: { _method: post|put }
+
+site_front_abuse_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:Abuse:delete" }
+    requirements: { _method: post|delete }

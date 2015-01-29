@@ -1,0 +1,30 @@
+site_front_category:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:Category:index" }
+
+site_front_category_show:
+    path:     /show/{id}
+    defaults: { _controller: "SiteFrontBundle:Category:show" }
+
+site_front_category_new:
+    path:     /new
+    defaults: { _controller: "SiteFrontBundle:Category:new" }
+
+site_front_category_create:
+    path:     /create
+    defaults: { _controller: "SiteFrontBundle:Category:create" }
+    requirements: { _method: post }
+
+site_front_category_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:Category:edit" }
+
+site_front_category_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:Category:update" }
+    requirements: { _method: post|put }
+
+site_front_category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:Category:delete" }
+    requirements: { _method: post|delete }

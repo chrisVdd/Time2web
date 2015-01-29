@@ -1,0 +1,30 @@
+site_user:
+    path:     /
+    defaults: { _controller: "SiteUserBundle:User:index" }
+
+site_user_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteUserBundle:User:show" }
+
+site_user_new:
+    path:     /new
+    defaults: { _controller: "SiteUserBundle:User:new" }
+
+site_user_create:
+    path:     /create
+    defaults: { _controller: "SiteUserBundle:User:create" }
+    requirements: { _method: post }
+
+site_user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteUserBundle:User:edit" }
+
+site_user_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteUserBundle:User:update" }
+    requirements: { _method: post|put }
+
+site_user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteUserBundle:User:delete" }
+    requirements: { _method: post|delete }

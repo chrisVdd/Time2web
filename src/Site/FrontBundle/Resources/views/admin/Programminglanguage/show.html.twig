@@ -1,0 +1,75 @@
+{% extends "SiteAdminBundle::layout.html.twig" %}
+
+{% block custom_block %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Voir un langage de programmation</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block container %}
+     <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    {{ entity.name }}
+                </div>
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion">
+                        <div class="ppanel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
+                                        Description
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>
+                                            <h3>Description :</h3>
+                                            <p>{{ entity.description }}</p>
+                                        </li>
+                                        <hr />
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                                        
+                        <div class="ppanel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
+                                        Actions
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
+                                <div class="panel-body">
+                                    <ul class="record_actions">
+                                        <li>
+                                            <a href="{{ path('admin_programminglanguage') }}">
+                                                Retour à la liste des langages de programmation
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('admin_programminglanguage_edit', { 'id': entity.id }) }}">
+                                                Editer
+                                            </a>
+                                        </li>
+                                        <li>{{ form(delete_form) }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+{% endblock %}

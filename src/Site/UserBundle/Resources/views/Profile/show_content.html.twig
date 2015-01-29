@@ -1,0 +1,44 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block content %}
+    {% if app.user.author.name is defined %}
+        {{ include('SiteUserBundle:Profile:author_profile.html.twig') }}  
+    {% elseif app.user.reader.name is defined %}
+        {{ include('SiteUserBundle:Profile:reader_profile.html.twig') }} 
+    {% else %}
+        <div class="col-xs-12 col-sm-9">
+            <p class="pull-right visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+            </p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        Bienvenue sur votre profil ! 
+                    </h2>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                            <div class="col-md-2">
+                                <img src="{{ asset('img/info.jpg') }}" class="img-responsive">
+                            </div>
+
+                            <div class="col-md-10">
+                                <p>
+                                    Avant de profiter des avantages liés à votre inscription sur Time2Web, il faut 
+                                    que vous complétiez votre profil.
+                                </p>
+                            </div>
+                    </div>
+                    <div class="row btn-div">
+                        <div class="col-md-12">
+                            <a href="{{ path('site_user_edit', { 'id': user.id }) }}" class="btn btn-block btn-success btn-responsive">
+                                Compléter mon profil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,42 @@
+site_front_comment:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:Comment:index" }
+
+site_front_comment_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteFrontBundle:Comment:show" }
+    
+site_front_comment_new:
+    pattern:  /new
+    defaults: { _controller: "SiteFrontBundle:Comment:new" }    
+
+site_front_comment_create:
+    path:     /create/{tutorial_id}
+    defaults: { _controller: "SiteFrontBundle:Comment:create" }
+    requirements: { _method: post }
+
+site_front_comment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:Comment:edit" }
+
+site_front_comment_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:Comment:update" }
+    requirements: { _method: post|put }
+
+site_front_comment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:Comment:delete" }
+    requirements: { _method: get|delete }
+    
+site_front_comment_tutorial:
+    path:     /comment_tutorial/{slug}
+    defaults: { _controller: "SiteFrontBundle:Comment:commentByTutorial" }    
+    
+site_front_comment_abuse:
+    pattern:  /{id}/abuse
+    defaults: { _controller: "SiteFrontBundle:Comment:abuse" }
+    
+site_front_comment_list_abuse:
+    pattern: /list_abuse
+    defaults: { _controller: "SiteFrontBundle:Comment:liste_abuse" }

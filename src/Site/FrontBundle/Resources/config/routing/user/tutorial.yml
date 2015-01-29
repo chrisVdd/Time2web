@@ -1,0 +1,34 @@
+user_tutorial:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:user/Tutorial:index" }
+    
+user_tutorial_show:
+    path:     /show/{slug}
+    defaults: { _controller: "SiteFrontBundle:user/Tutorial:show" }
+
+user_tutorial_new:
+    path:     /new
+    defaults: { _controller: "SiteFrontBundle:user/Tutorial:new" }
+
+user_tutorial_create:
+    path:     /create
+    defaults: { _controller: "SiteFrontBundle:user/Tutorial:create" }
+    requirements: { _method: post }
+
+user_tutorial_edit:
+    path:     /edit/{slug}
+    defaults: { _controller: "SiteFrontBundle:user/Tutorial:edit" }
+
+user_tutorial_update:
+    path:     /update/{slug}
+    defaults: { _controller: "SiteFrontBundle:user/Tutorial:update" }
+    requirements: { _method: post|put }
+
+user_tutorial_delete:
+    path:     /delete/{slug}
+    defaults: { _controller: "SiteFrontBundle:user/Tutorial:delete" }
+    requirements: { _method: post|delete }
+    
+user_tutorial_by_user:
+    path:     /show_user/
+    defaults: { _controller: "SiteFrontBundle:user/Tutorial:tutorialByUser" }

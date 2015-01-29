@@ -1,0 +1,68 @@
+{% if entities %}
+    <div class="panel-group">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Commentaires
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    {% for entity in entities %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-3 col-md-2">
+                                    {% if entity.user.image is not null %}
+                                        <img src="{{ asset('uploads/img/') }}{{ entity.user.image.path }}" class="img-circle img-responsive">
+                                    {% else %} 
+                                        <img src="{{ asset('img/default_avatar.jpg') }}" class="img-circle img-responsive" style="width: 80px">
+                                    {% endif %}
+                                </div>
+                                <div class="col-xs-9 col-md-10">
+                                    <div class="mic-info">
+                                        <strong>De: </strong><a href="#">{{ entity.user }}</a> le 
+                                        {% if entity.createdAt %}{{ entity.createdAt|date('d-m-Y H:i:s') }}{% endif %}
+                                    </div>
+                                    <hr />
+                                    <div class="comment-text">
+                                        <strong>Commentaire: </strong>
+                                        {% if entity.status == 1 %}
+                                            <p>{{ entity.content }}</p>
+                                        {% else %}
+                                            <div class="alert alert-danger" role="alert">
+                                                <p>Ce commentaire a été signalé comme abusif.</p>
+                                                <p>Il se trouve donc en attente de suppression, ou de réhabilitation
+                                                sur décision de l'administraeur de ce site.</p>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    {% block action %}
+                                        <div class="action" id="edit_action">
+                                            {% if app.user == entity.user %}
+                                                <a href="{{ path('site_front_comment_edit', {'id': entity.id}) }}" type="button" class="btn btn-primary btn-xs" title="Editer">
+                                                    Editer
+                                                </a>
+                                                    
+                                                <form action="{{ path('site_front_comment_delete', { 'id': entity.id }) }}" method="post">
+                                                    <input type="hidden" name="_method" value="DELETE" />
+                                                    {{ form_widget(deleteForms[entity.id]) }}
+                                                </form> 
+                                            {% else %}
+                                                {% if entity.status == 1 %}
+                                                    <a href="{{ path('site_front_comment_abuse', {'id': entity.id}) }}" type="button" class="btn btn-danger btn-xs" title="Signaler comme abusif">
+                                                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                                                    </a>
+                                                {% endif %} 
+                                            {% endif %}
+                                        </div> 
+                                    {% endblock %}
+                                </div> 
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul> 
+            </div>
+        </div>
+    </div>    
+{% endif %}

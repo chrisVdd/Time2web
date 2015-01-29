@@ -1,0 +1,12 @@
+{% extends "SiteFrontBundle::layout.html.twig" %}
+
+{#
+********** DYNAMIC CONTENT
+******************************
+#}
+
+{% block content %}
+    {% block last_tutorials %}
+        {{render (controller("SiteFrontBundle:Front:lastTutorial")) }}
+    {% endblock last_tutorials %}
+{% endblock content %}

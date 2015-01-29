@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            {% if app.user.author.name is defined %}
+                Profil de {{ app.user.author.name }}
+            {% elseif app.user.reader.name is defined %}
+                Profil de {{ app.user.reader.name }}
+            {% else %}
+                Profil
+            {% endif %}
+        </h2>
+    </div>
+    <div class="panel-body" id="profil_notif">
+        <a href="{{ path('site_user_profile_show') }}" class="list-group-item">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            Voir votre profil
+        </a>
+        {% if is_granted('ROLE_AUTHOR') and app.user.author.name is defined %}
+            <a href="{{ path('user_tutorial_new') }}" class="list-group-item">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Ajouter un tutoriel
+            </a>
+            <a href="{{ path('user_tutorial_by_user') }}" class="list-group-item">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                Voir mes tutoriels
+            </a>
+        {% elseif is_granted('ROLE_READER') and app.user.reader.name is defined %}
+            <a href="{{ path('user_favorite_by_user') }}" class="list-group-item">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                Gérer les favoris
+            </a>
+        {% endif %}
+    </div>
+</div>

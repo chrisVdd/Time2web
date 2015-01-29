@@ -1,0 +1,34 @@
+<ul class="nav navbar-nav col-lg-5 col-md-5 col-sm-5" id="main-menu">
+
+
+        {% for page in menu_pages %}
+            <li class="{% if request.get('_route') == '_page_show' and request.get('id') == page.id %}active{% endif %}">
+                <a href="{{ path('_page_show', {id: page.id}) }}">{{ page.title|e }}</a>
+            </li>
+        {% endfor %}
+
+
+
+    {#
+    <li class="btn-nav">
+        <a href="{{ path('site_front_homepage') }}" {% if app.request.attributes.get('_route') == "site_front_homepage" %}class="active"{% endif %}>
+            Accueil
+        </a>
+    </li>
+    <li class="btn-nav">
+        <a href="{{ path('site_front_tutorial') }}" {% if app.request.attributes.get('_route') == "site_front_tutorial" %}class="active"{% endif %}>
+            Tutoriels
+        </a>
+    </li>
+    <li class="btn-nav">
+        <a href="{{ path('site_front_about') }}" {% if app.request.attributes.get('_route') == "site_front_about" %}class="active"{% endif %}>
+            A propos
+        </a>
+    </li>
+    <li class="btn-nav">
+        <a href="{{ path('site_front_contact') }}" {% if app.request.attributes.get('_route') == "site_front_contact" %}class="active"{% endif %}>
+            Contact
+        </a>
+    </li>
+#}
+</ul>

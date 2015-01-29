@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: vandendycc
+    database_user: vandendycc
+    database_password: VanCC159
+    mailer_transport: smtp
+    mailer_host: relay.skynet.be
+    mailer_user: null
+    mailer_password: null
+    locale: fr
+    secret: 794add336cad99784973d0d26ac4f61010
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true

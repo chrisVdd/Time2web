@@ -1,0 +1,4 @@
+services:
+#    site_seo.example:
+#        class: Site\SeoBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,43 @@
+site_front_tutorial:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:Tutorial:index" }
+
+site_front_tutorial_show:
+    path:     /show/{slug}
+    defaults: { _controller: "SiteFrontBundle:Tutorial:show" }
+
+site_front_tutorial_new:
+    path:     /new
+    defaults: { _controller: "SiteFrontBundle:Tutorial:new" }
+
+site_front_tutorial_create:
+    path:     /create
+    defaults: { _controller: "SiteFrontBundle:Tutorial:create" }
+    requirements: { _method: post }
+
+site_front_tutorial_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:Tutorial:edit" }
+
+site_front_tutorial_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:Tutorial:update" }
+    requirements: { _method: post|put }
+
+site_front_tutorial_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:Tutorial:delete" }
+    requirements: { _method: get|delete }
+    
+site_front_tutorial_category:
+    path:     /tutorial_category/{id}
+    defaults: { _controller: "SiteFrontBundle:Tutorial:tutorial_category" }
+    
+site_front_tutorial_search:
+    pattern:  /search
+    defaults: { _controller: "SiteFrontBundle:Tutorial:search" }  
+    requirements: { _method: post }
+
+site_front_tutorial_promote:
+    pattern:  /tutorial_promote/{slug}
+    defaults: { _controller: "SiteFrontBundle:Tutorial:promote" }

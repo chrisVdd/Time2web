@@ -1,0 +1,29 @@
+<div id="last_comments">
+    <h5>Les derniers commentaires postés : </h5>
+    <hr />
+    <ul class="list_last">
+        {% for comment in comments %}
+            <li>
+                <p>
+                    <span class="glyphicon glyphicon-comment"></span>
+                    " {{ comment.content | truncate(40, true) }} ... "
+                </p>
+                <p>
+                    Tuto: 
+                    <a  href="{{ path('site_front_tutorial_show', { 'slug': comment.tutorial.slug }) }}">
+                        {{ comment.tutorial.title }}
+                    </a>
+                </p>
+                <small>
+                    Le {% if comment.createdAt %}{{ comment.createdAt|date('d-m-Y') }}{% endif %}
+                </small>  
+            </li>
+            <hr />
+        {% endfor %}
+    </ul>
+    <hr />
+    <a href="{{ path('site_front_comment', {'_format': 'atom'}) }}" class="list-group-item">
+        <i class="fa fa-rss-square"></i>
+        Flux RSS - Derniers commentaires
+    </a>
+</div>

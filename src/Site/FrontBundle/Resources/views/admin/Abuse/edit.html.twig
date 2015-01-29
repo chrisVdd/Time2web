@@ -1,0 +1,32 @@
+{% extends "SiteAdminBundle::layout.html.twig" %}
+
+{% block custom_block %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Modifier un abus</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block container %}
+
+        {{ form_start(edit_form) }}
+                
+            <div class="form-group">
+                {{ form_label(edit_form.text, 'Commentaire') }}
+                {{ form_widget(edit_form.text) }}
+                <p class="help-block">Example block-level help text here.</p>
+            </div>
+                
+            <div class="form-group">
+                {{ form_label(edit_form.createdAt, 'Date de création') }}
+                {{ form_widget(edit_form.createdAt, {'id': 'datepicker'}) }}
+                <p class="help-block">Example block-level help text here.</p>
+            </div>
+                
+            <div class="form-group">
+                {{ form_widget(edit_form.submit, {'attr': {'class': 'btn btn-success btn-lg'}}) }}
+            </div>
+            <hr />
+        {{ form_end(edit_form) }}
+{% endblock %}

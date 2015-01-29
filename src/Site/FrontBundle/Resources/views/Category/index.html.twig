@@ -1,0 +1,85 @@
+{% extends "SiteFrontBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title"><a href="{{ path('site_front_tutorial') }}">Les tutoriels</a></h2>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-4 col-md-4">
+                <h2>Heading</h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, 
+                    tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
+                    fermentum massa justo sit amet risus. Etiam porta sem malesuada
+                    magna mollis euismod. Donec sed odio dui. 
+                </p>
+                <p><a  href="#" role="button" class="btn btn-default">Voir les détails &raquo;</a></p>
+            </div><!--/span-->
+            <div class="col-lg-4 col-md-4">
+                <h2>Heading</h2>
+                <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, 
+                    tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
+                    fermentum massa justo sit amet risus. Etiam porta sem malesuada
+                    magna mollis euismod. Donec sed odio dui. 
+                </p>
+                <p><a  href="#" role="button" class="btn btn-default">Voir les détails &raquo;</a></p>
+            </div><!--/span-->
+            <div class="col-lg-4 col-md-4">
+                <h2>Heading</h2>
+               <p>
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, 
+                    tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
+                    fermentum massa justo sit amet risus. Etiam porta sem malesuada
+                    magna mollis euismod. Donec sed odio dui. 
+                </p>
+                <p><a  href="#" role="button" class="btn btn-default">Voir les détails &raquo;</a></p>
+            </div><!--/span-->
+        </div>
+    </div>
+    
+    <h1>Category list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Createdat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('site_front_category_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.status }}</td>
+                <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('site_front_category_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('site_front_category_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('site_front_category_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock content%}

@@ -1,0 +1,104 @@
+{% extends "SiteFrontBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="col-xs-12 col-sm-12">
+        <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">{{ entity.title }}</h2>
+            </div>
+            <div class="panel-body" id="tutorial_list">
+                <div id="detail" class="jumbotron">
+                    <h4>Détails : </h4>
+                    <ul class="fa-ul">
+                        <li>
+                            <i class="fa-li fa fa-user"></i>
+                            <p>Auteur :</p>
+                            {{ entity.user.author.name }}
+                        </li>
+                        <li>
+                            <i class="fa-li fa fa-thumb-tack"></i>
+                            <p>Catégorie :</p>
+                            {{ entity.category.name }}
+                        </li>
+                            {% if entity.programminglanguages.count>0 %}
+                                {% for programminglanguage in entity.programminglanguages %}
+                                    <li>
+                                        <i class="fa-li fa fa-code"></i>
+                                        <p>Langage(s) utilisé(s) :</p>
+                                        {{ programminglanguage.name }}
+                                    </li>    
+                                {% endfor %}
+                            {% endif %}
+                        <li>
+                            <i class="fa-li fa fa-list-alt"></i>
+                            <p>Description :</p>
+                            <p>{{ entity.description |capitalize }}</p>
+                        </li>
+                        
+                        <li>
+                            <i class="fa-li fa fa-clock-o"></i>
+                            <p>Création et modification : </p>
+                            <p>
+                                Crée le {% if entity.createdAt %}{{ entity.createdAt|date('d-m-Y H:i:s') }}{% endif %}
+                                et modifié le {% if entity.lastModified %}{{ entity.lastModified|date('d-m-Y H:i:s') }}{% endif %}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                            
+                <div id="show_tuto">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Le tutoriel :</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>{{ entity.content|raw }}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                {# si le membre connecté n'est pas l'auteur du tutoriel #}
+                {% if is_granted('ROLE_USER') %}
+                    
+                    {# FAVORIS ET PARTAGE #}
+                    {{ render(controller("SiteFrontBundle:user/Favorite:favoriteByUserAndTutorial", { 'tutorial_id' : entity.id })) }}
+                    <hr />
+                    <iframe src="//www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;layout=button_count" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true" class="iframeFB"></iframe>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="VandendyckChris" data-lang="fr">Tweeter</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+                    <hr />
+                    
+                    {% if app.user != entity.user %}
+                        {{ render (controller("SiteFrontBundle:Review:new" , { 'tutorial_id' : entity.id })) }}
+                        {{ render (controller("SiteFrontBundle:Comment:new" , { 'tutorial_id' : entity.id })) }}
+                        <hr />
+                    {% else %}
+                        {% block edit_comment %}
+                            <a href="{{ path('user_tutorial_edit', { 'slug': entity.slug }) }}" title="Editer" class="btn btn-primary btn-md btn-responsive" role="button">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Editer
+                            </a>
+                        {% endblock edit_comment %}
+                        <hr />
+                        {{ render (controller("SiteFrontBundle:Comment:new" , { 'tutorial_id' : entity.id })) }}
+                    {% endif %}
+                {% else %}
+                    <em>Pour poster un commentaire, ou pour noter ce tutoriel, veuillez vous connecter.</em>
+                    <hr />
+                {% endif %}
+                
+                {% block comment %}
+                    {{ render (controller("SiteFrontBundle:Comment:commentByTutorial" , { 'id' : entity.id })) }}
+                {% endblock %}
+                
+                {% block review %}
+                    {{ render (controller("SiteFrontBundle:Review:reviewByTutorial" , { 'id' : entity.id })) }}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

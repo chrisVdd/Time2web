@@ -1,0 +1,52 @@
+<div class="col-xs-12 col-sm-9">
+    <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+    </p>
+    <div class="panel panel-default" id="bloc_profil">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                Bienvenue sur votre profil {{ app.user.reader.name }}
+            </h2>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-xs-12 col-sm-9"  id="data_block">
+                        <div id="data_list">
+                            <h3>Vos données utilisateur</h3>
+                            <p><strong>Présentation: </strong> {{ app.user.reader.presentation|raw }} </p>
+                            <p><strong>Nom d'utilisateur: </strong> {{ user.username }} </p>
+                            <p>
+                                <strong>Email: </strong> {{ user.email }}  <br />
+                                <small>(Cet email est celui que vous utilisez pour vous connecter)</small>
+                            </p>
+                            <a href="{{ path('site_user_profile_edit', { 'id': user.id }) }}" class="btn btn-primary btn-md btn-block" type="button">
+                                Editer ces données
+                            </a>
+                        </div>
+
+                        <div id="password_profile">
+                            <h3>Mot de passe</h3>
+                            <p>Si vous souhaitez modifier votre mot de passe, suivez ce lien.</p>
+                            <a href="{{ path('site_user_change_password', { 'id': user.id }) }}" class="btn btn-primary btn-md btn-block" type="button">
+                                Modifier mon mot de passe
+                            </a>
+                        </div>
+                    </div>             
+                    <div class="col-xs-12 col-sm-3 text-center">
+                        {% if app.user.image is not null %}
+                            <figure>
+                                <img src="{{ asset('uploads/img/') }}{{ user.image.path }}" class="img-circle img-responsive">
+                            </figure>
+                        {% else %}
+                            <figure>
+                                <img src="{{ asset('img/default_avatar.jpg') }}" class="img-circle img-responsive">
+                            </figure>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

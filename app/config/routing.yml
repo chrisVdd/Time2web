@@ -1,0 +1,19 @@
+site_front:
+    resource: "@SiteFrontBundle/Resources/config/routing.yml"
+    prefix:   /site
+
+site_user:
+    resource: "@SiteUserBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+site_admin:
+    resource: "@SiteAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin 
+    
+site_seo:
+    resource: "@SiteSeoBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+_imagine:
+    resource: .
+    type:     imagine

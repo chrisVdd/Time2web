@@ -1,0 +1,30 @@
+admin_abuse:
+    path:     /
+    defaults: { _controller: "SiteFrontBundle:admin/Abuse:index" }
+
+admin_abuse_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteFrontBundle:admin/Abuse:show" }
+
+admin_abuse_new:
+    path:     /new
+    defaults: { _controller: "SiteFrontBundle:admin/Abuse:new" }
+
+admin_abuse_create:
+    path:     /create
+    defaults: { _controller: "SiteFrontBundle:admin/Abuse:create" }
+    requirements: { _method: post }
+
+admin_abuse_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteFrontBundle:admin/Abuse:edit" }
+
+admin_abuse_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteFrontBundle:admin/Abuse:update" }
+    requirements: { _method: post|put }
+
+admin_abuse_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteFrontBundle:admin/Abuse:delete" }
+    requirements: { _method: post|delete }

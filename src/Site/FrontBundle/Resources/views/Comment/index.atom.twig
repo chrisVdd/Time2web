@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Time2web</title>
+    <subtitle>Derniers commentaires</subtitle>
+    <link href="{{ url('site_front_comment', {'_format': 'atom'}) }}" rel="self"/>
+    <link href="{{ url('site_front_homepage') }}"/>
+    <updated>{{ lastUpdated }}</updated>
+    <author><name>Time2web</name></author>
+    <id>{{ feedId }}</id>
+
+    {% for entity in entities %}
+        <entry>
+            <title>{{ entity.content }}</title>
+            <link href="{{ url('site_front_comment_show', { 'id': entity.id }) }}" />
+            <id>{{ entity.id }}</id>
+            <updated>{{ entity.createdAt.format(constant('DATE_ATOM')) }}</updated>
+            <summary type="xhtml">
+                <div xmlns="http://www.w3.org/1999/xhtml">
+                    <div>
+                        {{ entity.status }}
+                    </div>
+                </div>
+            </summary>
+            <author>
+                <name>{{ entity.user.username }}</name>
+            </author>
+        </entry>
+    {% endfor %}
+</feed>

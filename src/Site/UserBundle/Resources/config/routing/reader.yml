@@ -1,0 +1,30 @@
+site_reader:
+    path:     /
+    defaults: { _controller: "SiteUserBundle:Reader:index" }
+
+site_reader_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteUserBundle:Reader:show" }
+
+site_reader_new:
+    path:     /new
+    defaults: { _controller: "SiteUserBundle:Reader:new" }
+
+site_reader_create:
+    path:     /create
+    defaults: { _controller: "SiteUserBundle:Reader:create" }
+    requirements: { _method: post }
+
+site_reader_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteUserBundle:Reader:edit" }
+
+site_reader_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteUserBundle:Reader:update" }
+    requirements: { _method: post|put }
+
+site_reader_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteUserBundle:Reader:delete" }
+    requirements: { _method: post|delete }

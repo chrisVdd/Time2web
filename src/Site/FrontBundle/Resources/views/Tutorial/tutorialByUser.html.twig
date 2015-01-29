@@ -1,0 +1,18 @@
+{% for tutorial in tutorials %}
+        <h4>Les tutoriels pour la categorie {{ tutorial.category.name }} : </h4>
+        <ul>
+            <li>
+                <a href="{{ path('site_front_tutorial_show', { 'id': tutorial.id }) }}">
+                    {{ tutorial.title }}
+                </a> - publié le {% if tutorial.createdAt %}{{ tutorial.createdAt|date('d/m/Y') }}{% endif %}
+                <br />
+                <a href="{{ path('site_front_tutorial_edit', { 'id': tutorial.id }) }}" title="Editer">
+                    <i class="fa fa-pencil-square-o"></i>
+                </a>
+                <a href="{{ path('site_front_tutorial_delete', { 'id': tutorial.id }) }}" title="Supprimer">
+                    <i class="fa fa-times"></i>
+                </a>
+            </li>
+        </ul> 
+        <hr />
+{% endfor %}

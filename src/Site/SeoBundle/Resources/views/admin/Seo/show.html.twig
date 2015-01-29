@@ -1,0 +1,109 @@
+{% extends "SiteAdminBundle::layout.html.twig" %}
+
+{% block custom_block %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Voir une configuration</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Configuration SEO
+                </div>
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion">
+                        <div class="ppanel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
+                                        Titre et suffixe
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>
+                                            <h3>Titre :</h3>
+                                            <p>{{ entity.title }}</p>
+                                        </li>
+                                        <hr />
+                                        <li>
+                                            <h3>Suffixe :</h3>
+                                            <p>{{ entity.suffix }}</p>
+                                        </li>
+                                        <hr />
+                                        <li>
+                                            <h3>Titre H1 :</h3>
+                                            <p>{{ entity.h1 }}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                                        
+                        <div class="ppanel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
+                                        Meta
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>
+                                            <h3>Meta description :</h3>
+                                            <p>{{ entity.metaDescription }}</p>
+                                        </li>
+                                        <hr />
+                                        <li>
+                                            <h3>Meta robot :</h3>
+                                            <p>{{ entity.metaRobot }}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                                        
+                        <div class="ppanel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="collapsed">
+                                        Actions
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse" style="height: 0px;">
+                                <div class="panel-body">
+                                    <ul class="record_actions">
+                                        <li>
+                                            <a href="{{ path('admin_seo') }}">
+                                                Retour à la liste des configurations
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('admin_seo_edit', { 'id': entity.id }) }}">
+                                                Editer
+                                            </a>
+                                        </li>
+                                        <li>{{ form(delete_form) }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+{% endblock %}

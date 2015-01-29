@@ -1,0 +1,89 @@
+{% if entities %}
+    <div class="panel-group">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-star"></span>
+                <h3 class="panel-title">
+                    Notations
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    {% for entity in entities %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-3 col-md-2">
+                                    {% if entity.user.image is not null %}
+                                        <img src="{{ asset('uploads/img/') }}{{ entity.user.image.path }}" class="img-circle img-responsive">
+                                    {% else %} 
+                                        <img src="{{ asset('img/default_avatar.jpg') }}" class="img-circle img-responsive" style="width: 80px">
+                                    {% endif %}
+                                </div>
+                                <div class="col-xs-9 col-md-10">
+                                    <div class="mic-info">
+                                        <strong>De: </strong><a href="#">{{ entity.user }}</a> le 
+                                        {% if entity.createdAt %}{{ entity.createdAt|date('d-m-Y H:i:s') }}{% endif %}
+                                        <p>
+                                            <strong>Note donnée: </strong>
+                                            {% if entity.value == 0 %}
+                                            {% elseif entity.value == 1 %}
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-grey"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-grey"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-grey"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-grey"></span>
+                                            {% elseif entity.value == 2 %}
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-grey"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-grey"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-grey"></span>
+                                            {% elseif entity.value == 3 %}
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-grey"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-grey"></span>
+                                            {% elseif entity.value == 4 %}
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-grey"></span>
+                                            {% elseif entity.value == 5 %}
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                                <span class="glyphicon glyphicon-star glyphicon-yellow"></span>
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="comment-text">
+                                        <strong>Commentaire: </strong>
+                                        <div>{{ entity.comment }}</div>
+                                    </div>
+                                    <hr />
+                                
+                                    <div class="action">
+                                        {% if app.user == entity.user %}
+                                            <a href="{{ path('site_front_review_edit', {'id': entity.id}) }}" type="button" class="btn btn-primary btn-xs" title="Editer">
+                                                Editer
+                                            </a>
+                                                
+                                            <form action="{{ path('site_front_review_delete', { 'id': entity.id }) }}" method="post">
+                                                <input type="hidden" name="_method" value="DELETE" />
+                                                {{ form_widget(deleteForms[entity.id]) }}
+                                            </form>
+                                           
+                                        {% endif %}
+                                    </div>    
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul> 
+            </div>
+        </div>
+    </div>    
+{% endif %}

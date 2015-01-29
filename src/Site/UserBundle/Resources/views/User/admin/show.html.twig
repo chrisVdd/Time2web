@@ -1,0 +1,117 @@
+{% extends "SiteAdminBundle::layout.html.twig" %}
+
+{% block custom_block %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Consulter la fiche d'un utilisateur</h1>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block container %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    {{ entity.username }}
+                </div>
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion">
+                        
+                        {# a copier #}
+                        <div class="ppanel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
+                                        Données utilisateurs
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>
+                                            <h3>Username :</h3>
+                                            <p>{{ entity.username }}</p>
+                                        </li>
+                                        <hr />
+                                        <li>
+                                            <h3>E-Mail :</h3>
+                                            <p>{{ entity.email }}</p>
+                                        </li>
+                                        <hr />
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                                        
+                        <div class="ppanel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
+                                        Données de connexion
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>
+                                            <h3>Date d'inscription :</h3>
+                                            <p>{% if entity.lastLogin %}{{ entity.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</p>
+                                        </li>
+                                        <hr />
+                                        <hr />
+                                        <li>
+                                            <h3>Autorisé : </h3>
+                                            <p>{{ entity.enabled }}</p>
+                                        </li>
+                                        <hr />
+                                        <li>
+                                            <h3>Verrouillé : </h3>
+                                            <p>{{ entity.locked }}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                                        
+                        <div class="ppanel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">
+                                        Actions
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" style="height: 0px;">
+                                <div class="panel-body">
+                                    <ul class="record_actions">
+                                        <li>
+                                            <a href="{{ path('admin_user') }}">
+                                                Retour à la liste des utilisateurs
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('admin_user_edit', { 'id': entity.id }) }}">
+                                                Editer
+                                            </a>
+                                        </li>
+                                        <li>{{ form(delete_form) }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>                
+                                       
+                    </div>
+                </div>
+                <!-- .panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div
+    {{ form(delete_form) }} 
+{% endblock %}
+

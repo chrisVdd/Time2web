@@ -1,0 +1,19 @@
+{% extends "SiteFrontBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                Ajouter un tutoriel
+            </h2>
+        </div>
+
+        <div class="panel-body">
+            {{ form(form) }}
+            <hr />
+            <a href="{{ path('site_user_profile_show') }}" class="btn btn-primary btn-responsive">
+                Retourner vers votre profil
+            </a>
+        </div>
+    </div>
+{% endblock content %}
